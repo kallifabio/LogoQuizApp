@@ -27,21 +27,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String companyName;
     String imageName;
 
+    // <editor-fold defaultstate="collapsed" desc="getPrefNameFirstStart">
     public static String getPrefNameFirstStart() {
         return prefNameFirstStart;
     }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="getDatabaseName">
     public static String getDatabaseName() {
         return databaseName;
     }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="getTableName">
     public static String getTableName() {
         return tableName;
     }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="getPrefLevel">
     public static String getPrefLevel() {
         return prefLevel;
     }
+    // </editor-fold>
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnHint.setOnClickListener(this);
     }
 
+    // <editor-fold defaultstate="collapsed" desc="loadLevel">
     public void loadLevel() {
         SharedPreferences preferencesLoad = getSharedPreferences(prefLevel, MODE_PRIVATE);
         currentLevel = preferencesLoad.getInt(prefLevel, 1);
@@ -76,18 +85,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="safeLevel">
     public void safeLevel() {
         SharedPreferences preferencesLevel = getSharedPreferences(prefLevel, MODE_PRIVATE);
         SharedPreferences.Editor editor = preferencesLevel.edit();
         editor.putInt(prefLevel, currentLevel);
         editor.apply();
     }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="animateLevelComplete">
     public void animateLevelComplete() {
 
     }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="firstAppStart">
     public boolean firstAppStart() {
         SharedPreferences preferences = getSharedPreferences(prefNameFirstStart, MODE_PRIVATE);
         if (preferences.getBoolean(prefNameFirstStart, true)) {
@@ -99,7 +114,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return false;
         }
     }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="createDatabase">
     public void createDatabase() {
         SQLiteDatabase database = openOrCreateDatabase(databaseName, MODE_PRIVATE, null);
         database.execSQL("CREATE TABLE " + tableName + " (id INTEGER, company TEXT, imageName TEXT)");
@@ -109,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         database.execSQL("INSERT INTO " + tableName + " VALUES('4', 'Ford', 'ford')");
         database.close();
     }
+    // </editor-fold>
 
     @Override
     public void onClick(View view) {
@@ -122,7 +140,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    // <editor-fold defaultstate="collapsed" desc="getMaxLevel">
     public int getMaxLevel() {
         return maxLevel;
     }
+    // </editor-fold>
 }
