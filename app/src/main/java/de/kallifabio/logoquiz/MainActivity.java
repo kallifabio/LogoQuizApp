@@ -4,13 +4,17 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.airbnb.lottie.LottieAnimationView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView ivLogo;
     EditText etLogoName;
     TextView tvHint;
+    LottieAnimationView av_correct;
     int currentLevel;
     String companyName;
     String imageName;
@@ -56,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        av_correct = findViewById(R.id.av_correct);
+
         ivLogo = findViewById(R.id.ivLogo);
         etLogoName = findViewById(R.id.etLogoName);
         btnHint = findViewById(R.id.btnHint);
@@ -66,6 +73,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnSkip.setOnClickListener(this);
         btnCheck.setOnClickListener(this);
         btnHint.setOnClickListener(this);
+
+        if (firstAppStart()) {
+            createDatabase();
+        }
+
+        loadLevel();
     }
 
     // <editor-fold defaultstate="collapsed" desc="loadLevel">
@@ -83,7 +96,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 cursor.close();
                 database.close();
             }
+
+            int imageID = getResources().getIdentifier(imageName, "drawable", getPackageName());
+            ivLogo.setImageResource(imageID);
         }
+
+        ivLogo.setVisibility(View.VISIBLE);
+        etLogoName.setVisibility(View.VISIBLE);
+        btnSkip.setVisibility(View.VISIBLE);
+        btnHint.setVisibility(View.VISIBLE);
+        btnCheck.setVisibility(View.VISIBLE);
+
+        av_correct.setVisibility(View.INVISIBLE);
+
+        etLogoName.setText("");
     }
     // </editor-fold>
 
@@ -98,7 +124,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // <editor-fold defaultstate="collapsed" desc="animateLevelComplete">
     public void animateLevelComplete() {
+        ivLogo.setVisibility(View.INVISIBLE);
+        etLogoName.setVisibility(View.INVISIBLE);
+        btnSkip.setVisibility(View.INVISIBLE);
+        btnHint.setVisibility(View.INVISIBLE);
+        btnCheck.setVisibility(View.INVISIBLE);
+        tvHint.setVisibility(View.INVISIBLE);
 
+        av_correct.setVisibility(View.VISIBLE);
+        av_correct.playAnimation();
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadLevel();
+            }
+        }, 2900);
     }
     // </editor-fold>
 
@@ -132,10 +174,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnCheck:
+                if (etLogoName.getText().toString().equalsIgnoreCase(companyName)) {
+                    currentLevel++;
+                    safeLevel();
+                    animateLevelComplete();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Leider falsch", Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.btnHint:
+                tvHint.setText("Erster Buchstabe: " + companyName.substring(0, 1));
+                tvHint.setVisibility(View.VISIBLE);
                 break;
             case R.id.btnSkip:
+                currentLevel++;
+                safeLevel();
+                Toast.makeText(getApplicationContext(), "Lösung: " + companyName, Toast.LENGTH_LONG).show();
+                animateLevelComplete();
                 break;
         }
     }
