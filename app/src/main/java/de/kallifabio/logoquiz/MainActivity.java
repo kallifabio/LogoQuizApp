@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     final static String databaseName = "level.db";
     final static String tableName = "level";
     final static String prefLevel = "currentLevel";
-    final int maxLevel = 4;
+    final int maxLevel = 24; // Bei weiteren Leveln erhöhen, so viel wie in Datenbank (id) eingetragen
     Button btnHint, btnSkip, btnCheck;
     ImageView ivLogo;
     EditText etLogoName;
@@ -37,49 +37,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return prefNameFirstStart;
     }
     // </editor-fold>
-
-    // <editor-fold defaultstate="collapsed" desc="getDatabaseName">
-    public static String getDatabaseName() {
-        return databaseName;
-    }
-    // </editor-fold>
-
-    // <editor-fold defaultstate="collapsed" desc="getTableName">
-    public static String getTableName() {
-        return tableName;
-    }
-    // </editor-fold>
-
-    // <editor-fold defaultstate="collapsed" desc="getPrefLevel">
-    public static String getPrefLevel() {
-        return prefLevel;
-    }
-    // </editor-fold>
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        av_correct = findViewById(R.id.av_correct);
-
-        ivLogo = findViewById(R.id.ivLogo);
-        etLogoName = findViewById(R.id.etLogoName);
-        btnHint = findViewById(R.id.btnHint);
-        btnSkip = findViewById(R.id.btnSkip);
-        btnCheck = findViewById(R.id.btnCheck);
-        tvHint = findViewById(R.id.tvHint);
-
-        btnSkip.setOnClickListener(this);
-        btnCheck.setOnClickListener(this);
-        btnHint.setOnClickListener(this);
-
-        if (firstAppStart()) {
-            createDatabase();
-        }
-
-        loadLevel();
-    }
 
     // <editor-fold defaultstate="collapsed" desc="loadLevel">
     public void loadLevel() {
@@ -158,7 +115,59 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="getDatabaseName">
+    public static String getDatabaseName() {
+        return databaseName;
+    }
+    // </editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="getTableName">
+    public static String getTableName() {
+        return tableName;
+    }
+    // </editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="getMaxLevel">
+    public int getMaxLevel() {
+        return maxLevel;
+    }
+    // </editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="getPrefLevel">
+    public static String getPrefLevel() {
+        return prefLevel;
+    }
+    // </editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="onCreate">
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        av_correct = findViewById(R.id.av_correct);
+
+        ivLogo = findViewById(R.id.ivLogo);
+        etLogoName = findViewById(R.id.etLogoName);
+        btnHint = findViewById(R.id.btnHint);
+        btnSkip = findViewById(R.id.btnSkip);
+        btnCheck = findViewById(R.id.btnCheck);
+        tvHint = findViewById(R.id.tvHint);
+
+        btnSkip.setOnClickListener(this);
+        btnCheck.setOnClickListener(this);
+        btnHint.setOnClickListener(this);
+
+        if (firstAppStart()) {
+            createDatabase();
+        }
+
+        loadLevel();
+    }
+    // </editor-fold>
+
     // <editor-fold defaultstate="collapsed" desc="createDatabase">
+    // Bei Bedarf ändern, Daten in Datenbank eintragen
     public void createDatabase() {
         SQLiteDatabase database = openOrCreateDatabase(databaseName, MODE_PRIVATE, null);
         database.execSQL("CREATE TABLE " + tableName + " (id INTEGER, company TEXT, imageName TEXT)");
@@ -166,10 +175,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         database.execSQL("INSERT INTO " + tableName + " VALUES('2', 'YouTube', 'youtube')");
         database.execSQL("INSERT INTO " + tableName + " VALUES('3', 'Instagram', 'instagram')");
         database.execSQL("INSERT INTO " + tableName + " VALUES('4', 'Ford', 'ford')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('5', 'Audi', 'audi')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('6', 'Apple', 'apple')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('7', 'Elgato', 'elgato')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('8', 'FaceBook', 'facebook')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('9', 'GitHub', 'github')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('10', 'IKEA', 'ikea')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('11', 'Intel', 'intel')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('12', 'Java', 'java')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('13', 'LG', 'lg')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('14', 'Logitech', 'logitech')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('15', 'PlayStation', 'playstation')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('16', 'Razer', 'razer')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('17', 'Roccat', 'roccat')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('18', 'Samsung', 'samsung')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('19', 'Seat', 'seat')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('20', 'Snapchat', 'snapchat')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('21', 'TikTok', 'tiktok')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('22', 'Twitch', 'twitch')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('23', 'Twitter', 'twitter')");
+        database.execSQL("INSERT INTO " + tableName + " VALUES('24', 'Xbox', 'xbox')");
         database.close();
     }
     // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="onClick">
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -194,10 +224,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-
-    // <editor-fold defaultstate="collapsed" desc="getMaxLevel">
-    public int getMaxLevel() {
-        return maxLevel;
-    }
     // </editor-fold>
+
 }
