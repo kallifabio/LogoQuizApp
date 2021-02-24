@@ -92,6 +92,7 @@
             android:id="@+id/btnBackToTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="-60dp"
             android:background="@drawable/layout_button"
             android:text="Zurück zur Themenauswahl" />
 
