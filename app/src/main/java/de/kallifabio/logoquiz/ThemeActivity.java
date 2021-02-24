@@ -7,24 +7,24 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class StartscreenActivity extends AppCompatActivity implements View.OnClickListener {
+public class ThemeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnStart;
+    Button btnThemeAuto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_startscreen);
+        setContentView(R.layout.activity_theme);
 
-        btnStart = findViewById(R.id.btnStart);
-        btnStart.setOnClickListener(this);
+        btnThemeAuto = findViewById(R.id.btnThemeAuto);
+        btnThemeAuto.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnStart:
-                Intent intent = new Intent(StartscreenActivity.this, ThemeActivity.class);
+            case R.id.btnThemeAuto:
+                Intent intent = new Intent(ThemeActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
                 break;

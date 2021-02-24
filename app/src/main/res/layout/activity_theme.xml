@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#C3C1C1"
+    android:orientation="vertical"
+    tools:context=".ThemeActivity">
+
+    <Button
+        android:id="@+id/btnThemeAuto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/layout_button"
+        android:text="Thema Auto" />
+
+    <Button
+        android:id="@+id/btnThemeSecret1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="-48dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/layout_button"
+        android:text="Thema Geheim" />
+
+    <Button
+        android:id="@+id/btnThemeSecret2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|right|left"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/layout_button"
+        android:text="Thema Geheim" />
+
+    <Button
+        android:id="@+id/btnThemeSecret3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="-58dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/layout_button"
+        android:text="Thema Geheim" />
+
+    <Button
+        android:id="@+id/btnThemeSecret4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|right|left"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/layout_button"
+        android:text="Thema Geheim" />
+
+    <Button
+        android:id="@+id/btnThemeSecret5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="-58dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/layout_button"
+        android:text="Thema Geheim" />
+
+    <Button
+        android:id="@+id/btnThemeSecret6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|right|left"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/layout_button"
+        android:text="Thema Geheim" />
+
+    <Button
+        android:id="@+id/btnThemeSecret7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="-58dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/layout_button"
+        android:text="Thema Geheim" />
+
+    <Button
+        android:id="@+id/btnThemeSecret8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|right|left"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/layout_button"
+        android:text="Thema Geheim" />
+
+    <Button
+        android:id="@+id/btnThemeSecret9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="-58dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/layout_button"
+        android:text="Thema Geheim" />
+
+    <Button
+        android:id="@+id/btnThemeSecret10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|right|left"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/layout_button"
+        android:text="Thema Geheim" />
+
+    <Button
+        android:id="@+id/btnThemeSecret11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="-58dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/layout_button"
+        android:text="Thema Geheim" />
+
+    <Button
+        android:id="@+id/btnThemeSecret12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|right|left"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/layout_button"
+        android:text="Thema Geheim" />
+
+    <Button
+        android:id="@+id/btnThemeSecret13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="-58dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/layout_button"
+        android:text="Thema Geheim" />
+
+    <Button
+        android:id="@+id/btnThemeSecret14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|right|left"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="22dp"
+        android:background="@drawable/layout_button"
+        android:text="Thema Geheim" />
+
+    <Button
+        android:id="@+id/btnThemeSecret15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="-67dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="22dp"
+        android:background="@drawable/layout_button"
+        android:text="Thema Geheim" />
+
+</LinearLayout>

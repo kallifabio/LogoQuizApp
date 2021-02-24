@@ -1,5 +1,6 @@
 package de.kallifabio.logoquiz;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     final static String tableName = "level";
     final static String prefLevel = "currentLevel";
     final int maxLevel = 24; // Bei weiteren Leveln erhöhen, so viel wie in Datenbank (id) eingetragen
-    Button btnHint, btnSkip, btnCheck;
+    Button btnHint, btnSkip, btnCheck, btnBackToTheme;
     ImageView ivLogo;
     EditText etLogoName;
     TextView tvHint;
@@ -152,11 +153,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnHint = findViewById(R.id.btnHint);
         btnSkip = findViewById(R.id.btnSkip);
         btnCheck = findViewById(R.id.btnCheck);
+        btnBackToTheme = findViewById(R.id.btnBackToTheme);
         tvHint = findViewById(R.id.tvHint);
 
         btnSkip.setOnClickListener(this);
         btnCheck.setOnClickListener(this);
         btnHint.setOnClickListener(this);
+        btnBackToTheme.setOnClickListener(this);
 
         if (firstAppStart()) {
             createDatabase();
@@ -221,6 +224,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 safeLevel();
                 Toast.makeText(getApplicationContext(), "Lösung: " + companyName, Toast.LENGTH_LONG).show();
                 animateLevelComplete();
+                break;
+            case R.id.btnBackToTheme:
+                Intent intent = new Intent(MainActivity.this, ThemeActivity.class);
+                startActivity(intent);
+                finish();
                 break;
         }
     }
